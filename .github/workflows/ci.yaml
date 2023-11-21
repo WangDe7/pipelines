@@ -51,7 +51,7 @@ jobs:
 
       - name: Push Image
         run: |
-          docker push dave917/cacheserver:1.0
+          docker push dave917/persistenceagent:2.0.0-alpha.7
 #      - name: Extract Docker metadata
 #        id: meta
 #        uses: docker/metadata-action@v4
