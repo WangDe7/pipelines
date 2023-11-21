@@ -37,7 +37,7 @@ jobs:
 
       - name: Build Image
         run: |
-          docker build -f backend/Dockerfile.persistenceagent -t dave917/persistenceagent:2.0.0-alpha.7 .
+          docker build -f backend/Dockerfile.scheduledworkflow -t dave917/scheduledworkflow:2.0.0 .
 #          docker build . --file Dockerfile.cacheserver --tag ${{env.IMAGE_NAME}}
 
       - name: Log into registry ${{ env.REGISTRY }}
@@ -51,7 +51,7 @@ jobs:
 
       - name: Push Image
         run: |
-          docker push dave917/persistenceagent:2.0.0-alpha.7
+          docker push dave917/scheduledworkflow:2.0.0
 #      - name: Extract Docker metadata
 #        id: meta
 #        uses: docker/metadata-action@v4
