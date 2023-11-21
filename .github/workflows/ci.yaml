@@ -21,9 +21,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    arch:
-      - arm64
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
