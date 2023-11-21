@@ -37,8 +37,7 @@ jobs:
 
       - name: Build Image
         run: |
-          cd backend
-          docker build -f Dockerfile.cacheserver -t dave917/cacheserver:1.0 .
+          docker build -f backend/Dockerfile.cacheserver -t dave917/cacheserver:1.0 .
 #          docker build . --file Dockerfile.cacheserver --tag ${{env.IMAGE_NAME}}
 
       - name: Log into registry ${{ env.REGISTRY }}
