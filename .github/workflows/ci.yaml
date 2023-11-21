@@ -58,21 +58,25 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.IMAGE_NAME }}
-          tags: |
-            # set latest tag for default branch
-            type=raw,value=latest,enable={{is_default_branch}}
-            # tag event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Push Image
+        run: |
+          docker push dave917/cacheserver:1.0
+#      - name: Extract Docker metadata
+#        id: meta
+#        uses: docker/metadata-action@v4
+#        with:
+#          images: ${{ env.IMAGE_NAME }}
+#          tags: |
+#            # set latest tag for default branch
+#            type=raw,value=latest,enable={{is_default_branch}}
+#            # tag event
+#            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
+#
+#      - name: Build and push Docker image
+#        uses: docker/build-push-action@v3
+#        with:
+#          context: .
+#          push: ${{ github.event_name != 'pull_request' }}
+#          tags: ${{ steps.meta.outputs.tags }}
+#          labels: ${{ steps.meta.outputs.labels }}
