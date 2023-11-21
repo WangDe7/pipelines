@@ -65,7 +65,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: 'dave917/scheduledworkflow'
+          images: 'dave917/cacheserver'
 #          tags: |
 #            # set latest tag for default branch
 #            type=raw,value=latest,enable={{is_default_branch}}
@@ -85,7 +85,7 @@ jobs:
           TARGETARCH: arm64
         with:
           context: .
-          file: backend/Dockerfile.viewercontroller
+          file: backend/Dockerfile.cacheserver
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
