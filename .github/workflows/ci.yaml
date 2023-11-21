@@ -66,11 +66,17 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: 'dave917/scheduledworkflow'
+#          tags: |
+#            # set latest tag for default branch
+#            type=raw,value=latest,enable={{is_default_branch}}
+#            # tag event
+#            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
+          flavor: |
+            latest=auto
           tags: |
-            # set latest tag for default branch
-            type=raw,value=latest,enable={{is_default_branch}}
-            # tag event
-            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
+            type=schedule
+            type=ref,event=tag
+            type=sha,prefix=,format=long,enable=true,priority=100
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
