@@ -91,9 +91,9 @@ jobs:
 #          TARGETARCH: arm64
         with:
           context: .
-          file: backend/Dockerfile
+          file: frontend/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: dave917/api-server:2.0.1
+          tags: dave917/ml-pipeline-frontend:2.0.1
           platforms: linux/arm64
 
 
