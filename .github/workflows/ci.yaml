@@ -91,9 +91,9 @@ jobs:
 #          TARGETARCH: arm64
         with:
           context: .
-          file: backend/Dockerfile.persistenceagent
+          file: backend/Dockerfile.viewercontroller
           push: ${{ github.event_name != 'pull_request' }}
-          tags: dave917/persistenceagent:2.0.1
+          tags: dave917/viewercontroller:2.0.1
           platforms: linux/arm64
 
 
