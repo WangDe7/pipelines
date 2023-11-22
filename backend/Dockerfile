@@ -17,7 +17,7 @@ FROM golang:1.20.4-buster as builder
 RUN apt-get update && apt-get install -y cmake clang musl-dev openssl
 WORKDIR /go/src/github.com/kubeflow/pipelines
 COPY . .
-RUN GO111MODULE=on go build -o /bin/apiserver backend/src/apiserver/*.go
+RUN GO111MODULE=on GOARCH=arm64 go build -o /bin/apiserver backend/src/apiserver/*.go
 # Check licenses and comply with license terms.
 RUN ./hack/install-go-licenses.sh
 # First, make sure there's no forbidden license.
